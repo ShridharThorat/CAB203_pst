@@ -1,0 +1,102 @@
+import re
+import numpy as np
+import numpy.linalg as la
+
+def runFSA(start, input):
+    state = start    
+    for regex, article in input.items():
+        hash = ""
+        for letter in article:
+            hash += "#" 
+        state = re.sub(regex, hash, state, flags=re.I)
+    return start + "\n" + state
+
+def censor(s):
+    stdNo = " <n10817239>"
+    # Define regex
+    a = 'a'
+    an = 'an'
+    the = 'the'
+    input = {a: "a", an: "an", the: "the"}
+    lastState = runFSA(s, input)
+    return lastState + stdNo
+
+
+
+
+# ratios for nitrogen an, bn
+# ratios for phosphate: ap, bp
+# for 1Kg fertiliser A and B
+# and required amounts of Nitrogen n
+# and required amounts of Phosphate p
+def fertiliser(an, ap, bn, bp, n, p):
+    # No ratios can be negative
+    if (an<0 or ap<0 or bn<0 or bp<0):
+        return None
+
+    # In Ax = Solution:
+    A = np.array(((an, bn),(ap, bp)))
+    x = np.array([(n),(p)])
+
+    # If singular, determinant is 0 and infinite solutions exists
+    if la.det(A) == float(0):
+        return None
+    else:
+        inv_A = la.inv(A)
+        Solution = tuple( np.matmul(inv_A,x) )
+        # Solution has negative A or B
+        if (Solution[0] < 0 or Solution[1]< 0 ):
+            return None
+        return Solution
+
+# \b      # Starting word boundary
+# (       # Starting capture group
+# t       # Match the character t
+# h       # Match the character h
+# e       # Match the character e
+# )       # End capture group
+# \b      # End word boundary
+# Takes a sentence as a string and returns a version
+# with articles censored
+def censor(s):
+    stdNo = " <n10817239>"
+    s = censor_article(r"\b(a)\b",s)
+    s = censor_article(r"\b(an)\b",s)
+    s = censor_article(r"\b(the)\b",s)
+    return  s + stdNo
+
+
+# Censors 1 article in a string s
+def censor_article(article, s):
+    count = 0
+    pos = re.search(article, s, flags = re.I)
+    while(pos != None):
+        for match in re.finditer(article, s, flags = re.I):
+            count+=1
+            new = list(s[:])
+            i = match.start()
+            while i< match.end():
+                new[i] = "#"
+                i+=1
+            s = ''.join(new)
+            pos = re.search(article, s, flags = re.I)
+            if pos == None:
+                return s
+    return s
+
+
+if __name__ == '__main__':
+    print(censor('The cat ate a mouse.'))
+    print(censor('THE THe ThE tHE'))
+    print(censor('A cAt a'))
+    print(censor('an An AN plan'))
+    print(censor('an_An_AN_the_plan'))
+
+
+    
+    # an = 0.1; ap = 0.4; bn = 0.3; bp = 0.2; n = 10; p = 20
+
+    # print(f'Function arguments: an = {an} ap = {ap} bn = {bn} bp = {bp} n = {n} p = {p} ')
+    # sol = fertiliser(an, ap, bn, bp, n, p)
+    # print(f'Result:         {sol}')
+    # print(f'Desired result: {(40.0, 20.0)}')
