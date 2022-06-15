@@ -2,7 +2,7 @@ import re; import numpy as np; import numpy.linalg as la;
 
 # Uncomment and implement two of the following.  Refer to the Problem solving brief for specifications.
 
-# Returns amount of fertilser A and B
+# Returns amount of fertilser A and B as a tuple (A, B)
 def fertiliser(an, ap, bn, bp, n, p): 
     '''Fertilisers: A and B\n nitrogen in 1kg of fertilisers: an & bn\n phosphate in 1kg of fertilisers: ap & bp'''
     if (an<0 or ap<0 or bn<0 or bp<0):
