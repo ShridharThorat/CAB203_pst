@@ -31,10 +31,10 @@ def censor(s):
                 article_in_string = re.search(article, s, flags = re.I)
     return  s + stdNo
 
-# def makeBet(headsOdds, tailsOdds, previousOutcome, state):
-#  # bet =
-#  # state = 
-#  return (bet, state)
+def makeBet(headsOdds, tailsOdds, previousOutcome, state):
+ # bet =
+ # state = 
+ return (bet, state)
 
 
 # The following will be run if you execute the file like python3 problem_solving.py
