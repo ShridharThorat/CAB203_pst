@@ -85,6 +85,10 @@ def censor_article(article, s):
     return s
 
 
+
+
+
+
 if __name__ == '__main__':
     print(censor('The cat ate a mouse.'))
     print(censor('THE THe ThE tHE'))
