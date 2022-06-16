@@ -19,6 +19,11 @@
 \definecolor{grey}{rgb}{0.827, 0.827, 0.827}
 \sethlcolor{grey}
 
+
+\usepackage[backend=biber, style=apa, citestyle=authoryear, sorting=nyt]{biblatex}
+\addbibresource{References.bib}
+
+
 % Define regex function names
 \def \variable {search}
 \newcommand \search {\textcolor{teal}{\textbf{re.search(\emph{pattern}, \emph{string}, \emph{flags=re.I})}}}
@@ -65,9 +70,9 @@ The regex patterns for the three articles in Python were chosen as below. Where 
 These regex patterns are checked in the string \textcolor{teal}{s} from left to right. The patterns can be interpreted as below.
 
 \begin{itemize}
-    \item The first \hl{\textbackslash b} sets the starting word boundary.
-    \item The article in \hl{()} defines the character capture group. Where only characters in this group are matches.
-    \item The last \hl{\textbackslash b} sets the end of the word boundary.
+    \item The first \hl{\textbackslash b} sets the starting word boundary \autocite{a2022_re}.
+    \item The article in \hl{()} defines the character capture group. Where only characters in this group are matches \autocite{a2022_re}.
+    \item The last \hl{\textbackslash b} sets the end of the word boundary \autocite{a2022_re}.
 \end{itemize}
 Thus the patterns only match words in the capture group. However, the articles must be matched regardless of capitalisation - which isn't done by the pattern. Instead of modifying the pattern, the flag \textcolor{teal}{re.IGNORECASE} is used.
 \vspace{5mm}
@@ -78,7 +83,7 @@ Thus the patterns only match words in the capture group. However, the articles m
 \vspace{2mm}
 
 \noindent
-The flag \textcolor{teal}{re.IGNORECASE} (\textcolor{teal}{re.I}) is used as a function parameter. As the name suggests, it performs case-\emph{in}sensitive matching for a pattern. For instance, the pattern \emph{r}\enquote{\textbackslash b(the)\textbackslash b} would match \enquote{\emph{The}}, \enquote{\emph{ThE}}, etc, when the flag is used in any function.
+The flag \textcolor{teal}{re.IGNORECASE} (\textcolor{teal}{re.I}) is used as a function parameter. As the name suggests, it performs case-\emph{insensitive} matching for a pattern \autocite{a2022_re}. For instance, the pattern \emph{r}\enquote{\textbackslash b(the)\textbackslash b} would match \enquote{\emph{The}}, \enquote{\emph{ThE}}, etc, when the flag is used in any function.
 
 Now we require functions which can determine if a match (article) exists in a string and all the matches for each of the patterns.
 \vspace{5mm}
@@ -88,17 +93,17 @@ Now we require functions which can determine if a match (article) exists in a st
 \vspace{2mm}
 
 \noindent
-In order to find the first location where a pattern produces a match, the regular function \search \ can be used. As the description, this function is used to determine whether any of the patterns exist, regardless of capitalisation (as defined by the flag). If the patterns exists, it can then be censored. However, this requires determining their location within the string.
+In order to find the first location where a pattern produces a match, the regular function \search \ can be used. As the description, this function is used to determine whether any of the patterns exist, regardless of capitalisation (as defined by the flag) \autocite{a2022_re}. If the patterns exists, it can then be censored. However, this requires determining their location within the string.
 \vspace{2mm}
 
 \noindent
-This can be done by using the function \finditer which scans the \textcolor{teal}{string} left-to-right and returns an iterator that yields \emph{match} objects which match the regex \textcolor{teal}{pattern}.
+This can be done by using the function \finditer which scans the \textcolor{teal}{string} left-to-right and returns an iterator that yields \emph{match} objects which match the regex \textcolor{teal}{pattern} \autocite{a2022_re}.
 
-I.e, it returns every match to the pattern, as a regex \emph{match} object. These objects have 2 attributes useful in this problem; the \matchStart \ and \matchEnd. These give the starting and ending index of a match respectively. Given the start and end indices, the string can be censored with a pound \# between these indices - thus censoring the article. Applying this for each match (i.e. article), the whole string can be censored.
+I.e, it returns every match to the pattern, as a regex \emph{match} object. These objects have 2 attributes useful in this problem; the \matchStart \ and \matchEnd. These gives the starting and ending index of a match respectively \autocite{a2022_re}. Given the start and end indices, the string can be censored with a pound \# between these indices - thus censoring the article. Applying this for each match (i.e. article), the whole string can be censored.
 
 
 \section{Linear algebra}
 
-
+\printbibliography
 
 \end{document}
