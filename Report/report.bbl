@@ -58,6 +58,44 @@
       \verb https://docs.python.org/3/library/re.html
       \endverb
     \endentry
+    \entry{CAB203_22se1}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=92dd9eef931158e966fd219403a6b0b8}{%
+           family={team},
+           familyi={t\bibinitperiod},
+           given={CAB203},
+           giveni={C\bibinitperiod},
+           givenun=0,
+           prefix={teaching},
+           prefixi={t\bibinitperiod}}}%
+      }
+      \strng{namehash}{92dd9eef931158e966fd219403a6b0b8}
+      \strng{fullhash}{92dd9eef931158e966fd219403a6b0b8}
+      \strng{bibnamehash}{92dd9eef931158e966fd219403a6b0b8}
+      \strng{authorbibnamehash}{92dd9eef931158e966fd219403a6b0b8}
+      \strng{authornamehash}{92dd9eef931158e966fd219403a6b0b8}
+      \strng{authorfullhash}{92dd9eef931158e966fd219403a6b0b8}
+      \field{sortinit}{t}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{06}
+      \field{title}{CAB203 Problem solving}
+      \field{urlday}{16}
+      \field{urlmonth}{6}
+      \field{urlyear}{2022}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://blackboard.qut.edu.au/bbcswebdav/pid-9577305-dt-content-rid-51686171_1/courses/CAB203_22se1/problem_solving_example.pdf
+      \endverb
+      \verb{url}
+      \verb https://blackboard.qut.edu.au/bbcswebdav/pid-9577305-dt-content-rid-51686171_1/courses/CAB203_22se1/problem_solving_example.pdf
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
