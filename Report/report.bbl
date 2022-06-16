@@ -21,21 +21,24 @@
   \datalist[entry]{nyt/global//global/global}
     \entry{a2022_re}{misc}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=a7f5f35426b927411fc9231b56382173}{%
-           family={Python},
-           familyi={P\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=9688a568902e4b07b60557b566bdd820}{%
+           family={Foundation},
+           familyi={F\bibinitperiod},
+           given={Python\bibnamedelima Software},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
       }
       \list{organization}{1}{%
         {docs.python.org}%
       }
-      \strng{namehash}{a7f5f35426b927411fc9231b56382173}
-      \strng{fullhash}{a7f5f35426b927411fc9231b56382173}
-      \strng{bibnamehash}{a7f5f35426b927411fc9231b56382173}
-      \strng{authorbibnamehash}{a7f5f35426b927411fc9231b56382173}
-      \strng{authornamehash}{a7f5f35426b927411fc9231b56382173}
-      \strng{authorfullhash}{a7f5f35426b927411fc9231b56382173}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \strng{namehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{fullhash}{9688a568902e4b07b60557b566bdd820}
+      \strng{bibnamehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authorbibnamehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authornamehash}{9688a568902e4b07b60557b566bdd820}
+      \strng{authorfullhash}{9688a568902e4b07b60557b566bdd820}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{year}
       \true{uniqueprimaryauthor}

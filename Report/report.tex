@@ -123,49 +123,49 @@ From the premise, 2 simultaneous equations that solve for nitrogen \textbf{\text
 \noindent
 If we consider that the ratios of nitrogen and phosphate in the two fertilisers are unknown, where
 \begin{itemize}
-    \item \textbf{\textcolor{teal}{an}} and \textbf{\textcolor{teal}{bn}} are the amounts of nitrogen in 1kg of fertiliser A and B respectively
-    \item \textbf{\textcolor{teal}{ap}} and \textbf{\textcolor{teal}{bp}} are the amounts of phosphate in 1kg of fertiliser A and B respectively
+    \item \textbf{\textcolor{teal}{$a_n$}} and \textbf{\textcolor{teal}{$b_n$}} are the amounts of nitrogen in 1kg of fertiliser A and B respectively
+    \item \textbf{\textcolor{teal}{$a_p$}} and \textbf{\textcolor{teal}{$b_p$}} are the amounts of phosphate in 1kg of fertiliser A and B respectively
 \end{itemize}
-Then the equations can be re-written As
-\begin{center} $n=anA + bnB$ \end{center}
-\begin{center} $p=apA + bpB$ \end{center}
+Then the equations can be re-written as
+\begin{center} $n=a_n A + b_n B$ \end{center}
+\begin{center} $p=a_p A + b_p B$ \end{center}
 
 \noindent
 In matrix form:
 \begin{equation*}
     \begin{bmatrix} n \\p \end{bmatrix} =
-    \begin{bmatrix} an & bn \\ ap & bp \end{bmatrix}
-    \begin{bmatrix} A \\B \end{bmatrix}
+    \begin{bmatrix} a_n & b_n \\ a_p & b_p \end{bmatrix}
+    \begin{bmatrix} A \\ B \end{bmatrix}
 \end{equation*}
-\begin{center} or $\mathbf{r} = C\mathbf{f}$ \end{center}
 
 \noindent
 Since the amount of fertiliser A and B is unknown, we can rearrange the equation as such
 \begin{equation}
-    \begin{bmatrix} A \\B \end{bmatrix} =
-    \begin{bmatrix} an & bn \\ ap & bp \end{bmatrix}^{-1}
+    \begin{bmatrix} A \\ B \end{bmatrix} =
+    \begin{bmatrix} a_n & b_n \\ a_p & b_p \end{bmatrix}^{-1}
     \begin{bmatrix} n \\p \end{bmatrix}
 \end{equation}
-\begin{equation} or \ \ \mathbf{f} = C^{-1}\mathbf{r} \end{equation}
+
 
 \noindent
-The inverse of $C$ can be written using the rule for inverses of 2-by-2 matrices:
+The inverse of $\begin{bmatrix}\begin{smallmatrix}a_n & b_n \\ a_p & b_p  \end{smallmatrix}\end{bmatrix}$ can be written using the rule for inverses of 2-by-2 matrices:
 \begin{equation*}
-    C^{-1} = 
-    \begin{bmatrix} an & bn \\ ap & bp \end{bmatrix}^{-1} =
-    det(C)\cdot \begin{bmatrix} bp & -bn \\ -ap & an \end{bmatrix}
-\end{equation*}
-Where
-\begin{equation*}
-    det(C) = \frac{1}{an\cdot bp - bn\cdot ap} 
+    \begin{bmatrix} a_n & b_n \\ a_p & b_p \end{bmatrix}^{-1} =
+    det(C)\cdot \begin{bmatrix} b_p & -b_n \\ -a_p & a_n \end{bmatrix}
 \end{equation*}
 
+\begin{flushright}
+    \begin{equation*}
+        Where \ det(C) = \frac{1}{a_n b_p - b_n a_p} 
+    \end{equation*}
+\end{flushright}
+
 \noindent
-From the formula for the inver of $C$, it can be observed that the inverse will not exist if the determinant ($det(C)$) is $0$. And thus by equation $(2)$, matrix (technically vector) $\mathbf{f}$ does not have a unique solution. 
+From the above formula for the inverse, it can be observed that the inverse will not exist if the determinant ($det(C)$) is $0$. And thus by equation $(1)$, matrix $\begin{bmatrix}\begin{smallmatrix} A \\ B \end{smallmatrix}\end{bmatrix}$ does not have a unique solution. 
 \vspace{2mm}
 
 \noindent
-This problem was implemented in python using the function \fertiliser, which returns a tuple \textcolor{teal}{(a,b)} which represents the amount of fertiliser $A$ and $B$. Using the Python package \textbf{numpy}, the function returns \textcolor{teal}{None} when the determinant of matrix $C$ is $0$. Additionally, sicne the amount of fertiliser cannot be negative, it also returns \textcolor{teal}{None} if \textcolor{teal}{a} or \textcolor{teal}{b} in \textcolor{teal}{(a,b)} are negative.
+This problem was implemented in python using the function \fertiliser, which returns a tuple \textcolor{teal}{(a,b)} which represents the amount of fertiliser $A$ and $B$. Using the Python package \textbf{numpy}, the function returns \textcolor{teal}{None} when the determinant of matrix $C$ is $0$. Additionally, since the amount of fertiliser cannot be negative, it also returns \textcolor{teal}{None} if \textcolor{teal}{a} or \textcolor{teal}{b} in \textcolor{teal}{(a,b)} are negative.
 
 \printbibliography
 
