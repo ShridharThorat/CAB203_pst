@@ -10,9 +10,9 @@
 \usepackage{titling}
 \usepackage{csquotes}
 \geometry{
-%    left=20mm,   
-%    right=20mm,
-%    top=20mm,
+    left=20mm,   
+    right=20mm,
+    top=20mm,
     bottom=20mm,
  }
 \setlength{\droptitle}{-27mm}
@@ -56,6 +56,8 @@
 
 \section{Regular languages and finite state automata}
 In order to censor the articles: '\emph{a}', '\emph{an}' and  '\emph{the}', and append a student's number in their emails, a Python function \textcolor{teal}{\textbf{censor(s)}} was developed. This function applies the required censoring to a string \textcolor{teal}{\textbf{s}}, replacing each letter in an article with the pound sign: \textcolor{teal}{\textbf{\#}}, and appends a student number (including a single whitespace) if the string was censored.
+
+This function took advantage of the Python package \textcolor{teal}{\textbf{re}}, which provides regular expression syntax and functions. 
 \vspace{5mm}
 
 \noindent
@@ -63,9 +65,9 @@ In order to censor the articles: '\emph{a}', '\emph{an}' and  '\emph{the}', and 
 \vspace{2mm}
 
 \noindent
-This function took advantage of the Python package \textcolor{teal}{\textbf{re}}, which provides regular expression syntax and functions. The syntax used were; \textcolor{teal}{\textbackslash b} and \textcolor{teal}{( )}. The syntax \textcolor{teal}{\textbackslash b} defines the beginning and ending of a word boundary, while \textcolor{teal}{( )} defines a capture group.
+The syntax used were; \textcolor{teal}{\textbackslash b} and \textcolor{teal}{( )}. The syntax \textcolor{teal}{\textbackslash b} defines the beginning and ending of a word boundary, while \textcolor{teal}{( )} defines a capture group.
 
-The regex patterns for the three articles in Python were chosen as below. Where \emph{r} simply defines a raw string.
+The regex patterns for the three articles in Python were chosen as below. Where \emph{r} simply defines a raw string in Python.
 \begin{center}
     \begin{minipage}[c]{1\linewidth}
         \begin{itemize}
@@ -79,10 +81,10 @@ These regex patterns are checked in the string \textcolor{teal}{s} from left to 
 
 \begin{itemize}
     \item The first \hl{\textbackslash b} sets the starting word boundary \autocite{a2022_re}.
-    \item The article in \hl{()} defines the character capture group. Where only characters in this group are matches \autocite{a2022_re}.
+    \item The article in \hl{()} defines the character capture group. Where only characters in this group are matched \autocite{a2022_re}.
     \item The last \hl{\textbackslash b} sets the end of the word boundary \autocite{a2022_re}.
 \end{itemize}
-Thus the patterns only match words in the capture group. However, the articles must be matched regardless of capitalisation - which isn't done by the pattern. Instead of modifying the pattern, the flag \textcolor{teal}{re.IGNORECASE} is used.
+Thus the patterns only match characters in the capture group - and thus, the articles. However, the articles must be matched regardless of capitalisation - which isn't done by the pattern. Instead of modifying the pattern, the flag \textcolor{teal}{re.IGNORECASE} was used in the regular functions.
 \vspace{5mm}
 
 
@@ -91,7 +93,7 @@ Thus the patterns only match words in the capture group. However, the articles m
 \vspace{2mm}
 
 \noindent
-The flag \textcolor{teal}{re.IGNORECASE} (\textcolor{teal}{re.I}) is used as a function parameter. As the name suggests, it performs case-\emph{insensitive} matching for a pattern \autocite{a2022_re}. For instance, the pattern \emph{r}\enquote{\textbackslash b(the)\textbackslash b} would match \enquote{\emph{The}}, \enquote{\emph{ThE}}, etc, when the flag is used in any function.
+The flag \textcolor{teal}{re.IGNORECASE} (\textcolor{teal}{re.I}) was used as a function parameter. As the name suggests, it performs case-\emph{insensitive} matching for a pattern \autocite{a2022_re}. For instance, the pattern \emph{r}\enquote{\textbackslash b(the)\textbackslash b} would match \enquote{\emph{The}}, \enquote{\emph{ThE}}, etc, when the flag is used in any function.
 
 Now we require functions which can determine if a match (article) exists in a string and all the matches for each of the patterns.
 \vspace{5mm}
@@ -101,13 +103,11 @@ Now we require functions which can determine if a match (article) exists in a st
 \vspace{2mm}
 
 \noindent
-In order to find the first location where a pattern produces a match, the regular function \search \ can be used. As the description, this function is used to determine whether any of the patterns exist, regardless of capitalisation (as defined by the flag) \autocite{a2022_re}. If the patterns exists, it can then be censored. However, this requires determining their location within the string.
-\vspace{2mm}
+In order to find the first location where a pattern produces a match, the regular function \search \ was used. As the name suggests, this function finds a match to the pattern in the string, regardless of capitalisation (as defined by the flag) \autocite{a2022_re}. If any article pattern exists, it can then be censored. However, this requires determining their location within the string - specifically, the start and end. Another function \finditer \ was used to determine this information.
 
-\noindent
-This can be done by using the function \finditer which scans the \textcolor{teal}{string} left-to-right and returns an iterator that yields \emph{match} objects which match the regex \textcolor{teal}{pattern} \autocite{a2022_re}.
+It scans the \textcolor{teal}{string} from left-to-right and returns an iterator that yields \emph{match} objects which match the regex \textcolor{teal}{pattern} \autocite{a2022_re}.
 
-I.e, it returns every match to the pattern, as a regex \emph{match} object. These objects have 2 attributes useful in this problem; the \matchStart \ and \matchEnd. These gives the starting and ending index of a match respectively \autocite{a2022_re}. Given the start and end indices, the string can be censored with a pound \# between these indices - thus censoring the article. Applying this for each match (i.e. article), the whole string can be censored.
+I.e, it returns every match to the pattern as a regex \emph{match} object. These objects have 2 attributes useful in this problem; the \matchStart \ and \matchEnd \ which return the starting and ending index of a match respectively \autocite{a2022_re}. Given the start and end indices, the string can be censored with a pound \# between these indices - thus censoring the article. Applying this for each match (i.e. article), the whole string can be censored.
 
 
 \section{Linear algebra}
@@ -153,19 +153,17 @@ The inverse of $\begin{bmatrix}\begin{smallmatrix}a_n & b_n \\ a_p & b_p  \end{s
     \begin{bmatrix} a_n & b_n \\ a_p & b_p \end{bmatrix}^{-1} =
     det(C)\cdot \begin{bmatrix} b_p & -b_n \\ -a_p & a_n \end{bmatrix}
 \end{equation*}
-
-\begin{flushright}
-    \begin{equation*}
-        Where \ det(C) = \frac{1}{a_n b_p - b_n a_p} 
-    \end{equation*}
-\end{flushright}
+\begin{equation*}
+    Where \ det(C) = \frac{1}{a_n b_p - b_n a_p} 
+\end{equation*}
 
 \noindent
-From the above formula for the inverse, it can be observed that the inverse will not exist if the determinant ($det(C)$) is $0$. And thus by equation $(1)$, matrix $\begin{bmatrix}\begin{smallmatrix} A \\ B \end{smallmatrix}\end{bmatrix}$ does not have a unique solution. 
+From the above formulae, it can be observed that the inverse will not exist if the determinant; $det(C)$ is $0$. If $det(C)=0$, then referring to equation (1), vector $\begin{bmatrix}\begin{smallmatrix} A \\ B \end{smallmatrix}\end{bmatrix}$ would not have a unique solution. 
 \vspace{2mm}
 
 \noindent
-This problem was implemented in python using the function \fertiliser, which returns a tuple \textcolor{teal}{(a,b)} which represents the amount of fertiliser $A$ and $B$. Using the Python package \textbf{numpy}, the function returns \textcolor{teal}{None} when the determinant of matrix $C$ is $0$. Additionally, since the amount of fertiliser cannot be negative, it also returns \textcolor{teal}{None} if \textcolor{teal}{a} or \textcolor{teal}{b} in \textcolor{teal}{(a,b)} are negative.
+This problem was implemented in python using the function \fertiliser, which returns \textcolor{teal}{(a,b)}, where $a$ and $b$ represent the amount of fertiliser $A$ and $B$ respectively. Using the Python package \textbf{numpy}, the function returns \textcolor{teal}{None} when the determinant of matrix $C$ is $0$. Additionally, since the amount of fertiliser cannot be negative, it returns \textcolor{teal}{None} if \textcolor{teal}{a} or \textcolor{teal}{b} are negative.
+\vspace{40mm}
 
 \nocite{CAB203_22se1}
 \printbibliography

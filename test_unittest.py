@@ -1,4 +1,4 @@
-import problem_solving as pst
+import problem_solving_2 as pst
 import unittest
 
 class Test_TestCensor(unittest.TestCase):
