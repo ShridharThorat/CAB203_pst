@@ -1,5 +1,5 @@
 import re; import numpy as np;
-
+studentid = 'n10817239'
 # Returns amount of fertilser A and B
 def fertiliser(an, ap, bn, bp, n, p): 
     '''Fertilisers: A and B\n nitrogen in 1kg of fertilisers: an & bn\n phosphate in 1kg of fertilisers: ap & bp'''

@@ -38,3 +38,48 @@ class Test_TestFertiliser(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main
+
+# import unittest
+
+# problem_solving = __import__("problem_solving")
+
+# class TestMethods(unittest.TestCase):
+
+#     def test_censor(self):
+#         if 'censor' not in dir(problem_solving): self.skipTest("censor doesn't exist")
+#         if "studentid" not in dir(problem_solving): self.skipTest("Problem Solving File has no studentid defined, please define one")
+
+#         censortests = [
+#                         ('The cat ate a mouse.', '### cat ate # mouse.'),
+#                         ('I went to the store.', 'I went to ### store.'),
+#                         ('A cookie is a very nice thing', '# cookie is # very nice thing'),
+#                         ('THe thing over there.is.tHe.best!', '### thing over there.is.###.best!'),
+#                         ('aN-otter-ate-An-apple.', '##-otter-ate-##-apple.'),
+#                         ("Don't change anything!", "Don't change anything!")
+#                     ]
+#         for text, result in censortests:
+#             with self.subTest(text=text):
+#                 sol = problem_solving.censor(text)
+#                 if text != result: result = f'{result} <{problem_solving.studentid}>'
+#                 self.assertEqual(sol, result, f'\n\tReturned: {sol}\n\tExpected: {result}')
+            
+#     def test_fertiliser(self):
+#         if 'fertiliser' not in dir(problem_solving): self.skipTest("fertiliser doesn't exist")
+#         fertilisertests = [
+#              ((1.0, 0.0, 0.0, 1.0, 2.0, 2.0), (2.0,  2.0)),
+#              ((0.3, 0.2, 0.1, 0.4, 10,  20 ), (20.0, 40.0)),
+#              ((0.1, 0.4, 0.3, 0.2, 10,  20 ), (40.0, 20.0)),
+#              ((0.5, 0.5, 0.5, 0.3, 10,  2  ), None),
+#              ((0.3, 0.3, 0.3, 0.3, 10,  20 ), None)
+#             ]
+#         for args, result in fertilisertests:
+#             with self.subTest(args=args):
+#                 sol = problem_solving.fertiliser(*args)
+#                 if result == None: self.assertIsNone(sol,f"\n\tExpected: None\n\tReturned: {sol}")
+#                 else: 
+#                     self.assertIsNotNone(sol, f"\n\tExpected: {sol}\n\tReturned: None")
+#                     self.assertAlmostEqual(sol[0], result[0], delta=0.001)
+#                     self.assertAlmostEqual(sol[1], result[1], delta=0.001)
+
+# if __name__ == "__main__":
+#     unittest.main()
